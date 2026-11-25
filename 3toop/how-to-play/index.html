@@ -28,6 +28,8 @@
       background: #3a3936; aspect-ratio: 16 / 9; object-fit: cover;
     }
     figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+    figure.tray { max-width: 340px; }
+    figure.tray img { aspect-ratio: auto; object-fit: contain; }
     .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .pair figure { margin: 0; }
     .hero { margin-top: 1.5rem; }
@@ -87,7 +89,8 @@
 
     <figure class="hero">
       <video src="img/goal.mp4" poster="img/goal-poster.webp" autoplay muted loop playsinline
-        aria-label="A ball goes into the goal and the word GOAL appears"></video>
+        aria-label="In slow motion, a ball passes between the other two and into the goal, and GOAL appears"></video>
+      <figcaption>Slow motion: the shot passes between the other two balls and goes in.</figcaption>
     </figure>
 
     <section id="match">
@@ -135,17 +138,29 @@
         <dd>Your turn’s time ran out. The turn passes.</dd>
       </dl>
 
-      <figure>
-        <img src="img/out.webp" width="1280" height="720" loading="lazy"
-          alt="An OUT call over the pitch, with the banner: the ball left the pitch outside the goal, shoot again">
-        <figcaption>Every call says what happened and what comes next.</figcaption>
-      </figure>
+      <div class="pair">
+        <figure>
+          <img src="img/out.webp" width="1280" height="720" loading="lazy"
+            alt="An OUT call over the pitch, with the banner: the ball left the pitch outside the goal, shoot again">
+          <figcaption>An out: the balls reset and you shoot again.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/timeout.webp" width="1280" height="720" loading="lazy"
+            alt="A TIMEOUT call, with the banner: the time for this turn ran out, the turn passes">
+          <figcaption>A timeout: the turn passes.</figcaption>
+        </figure>
+      </div>
+      <p>The banner under a call explains it the first few times you see each
+      kind of call. In <strong>Settings</strong>, <strong>Call
+      Explanations</strong> can show it every time or turn it off, and
+      <strong>Call Style</strong> changes how the calls look.</p>
 
       <h3>Turns and winning</h3>
       <ul class="rules">
         <li>Each turn lasts <strong>20 seconds</strong>, and you can take as many
-          shots as you like in that time. The game warns you as time runs
-          low.</li>
+          shots as you like in that time. The timer changes colour as
+          your time runs low, then pulses and ticks through the last
+          seconds.</li>
         <li>Your turn ends only when your time is up. Fouls, outs and goals
           just reset the balls.</li>
         <li>Each player gets <strong>five turns</strong>. Most goals wins.</li>
@@ -158,7 +173,8 @@
       <h2><span class="num">2</span>Blockers</h2>
       <p>Blockers are small walls you put in front of the goal to stop your
       opponent scoring. Your blockers stop your opponent’s balls but not yours.
-      Turn them on in <strong>Match Settings</strong>.</p>
+      They are on by default. You can turn them off in <strong>Match
+      Settings</strong>.</p>
 
       <figure>
         <img src="img/blockers.webp" width="960" height="540" loading="lazy"
@@ -184,6 +200,13 @@
       points, or to skip. You can have only a few blockers standing at once,
       and if you are behind on goals, everything costs less.</p>
 
+      <figure class="tray">
+        <img src="img/build-tray.webp" width="540" height="525" loading="lazy"
+          alt="The build window: your points at the top, three materials on the left and three places on the right">
+        <figcaption>The build window: pick a material on the left, then one of the three places on
+        the right. Prices are blurred because they are still being tuned.</figcaption>
+      </figure>
+
       <div class="materials">
         <div class="material"><strong>Wood</strong><span>Cheap and solid.</span></div>
         <div class="material"><strong>Brick</strong><span>Costs more. Ordinary hits barely mark it.</span></div>
@@ -207,9 +230,9 @@
       brick. The ring round the ball shows how close you are.</p>
 
       <figure>
-        <img src="img/charge.webp" width="960" height="540" loading="lazy"
-          alt="Two balls glowing with a purple charge ring">
-        <figcaption>A purple ring means your next shot is charged.</figcaption>
+        <img src="img/charge.webp" width="1280" height="720" loading="lazy"
+          alt="Magenta rings closed round each ball and round the chain counter">
+        <figcaption>The magenta ring fills as your chain grows. When it closes, your next shot is charged.</figcaption>
       </figure>
 
       <div class="callout">On your turn your own blockers are hidden, so you can
@@ -259,9 +282,9 @@
       </div>
 
       <figure>
-        <img src="img/fire.webp" width="600" height="338" loading="lazy"
-          alt="A burning ball streaks across the pitch">
-        <figcaption>Fire: a burning shot.</figcaption>
+        <video src="img/fire.mp4" poster="img/fire-poster.webp" autoplay muted loop playsinline
+          aria-label="In slow motion, a burning ball flies up the pitch and bounces off the wall"></video>
+        <figcaption>Fire: a burning shot, slowed down.</figcaption>
       </figure>
 
       <figure>
@@ -270,18 +293,11 @@
         <figcaption>Heavy: a heavy ball smashes into brick.</figcaption>
       </figure>
 
-      <div class="pair">
-        <figure>
-          <img src="img/ghost-flight.webp" width="960" height="540" loading="lazy"
-            alt="A ghost ball with a pale halo flies toward a brick blocker">
-          <figcaption>Ghost: the halo shows the pass is ready…</figcaption>
-        </figure>
-        <figure>
-          <img src="img/ghost-pass.webp" width="960" height="540" loading="lazy"
-            alt="The ghost ball passes through the brick blocker">
-          <figcaption>…and the ball slips through the brick.</figcaption>
-        </figure>
-      </div>
+      <figure>
+        <video src="img/ghost.mp4" poster="img/ghost-poster.webp" autoplay muted loop playsinline
+          aria-label="In slow motion, a ball with a pale halo slips straight through a brick blocker"></video>
+        <figcaption>Ghost: the halo shows the pass is ready, and the ball slips through the brick. Slowed down.</figcaption>
+      </figure>
     </section>
 
     <section id="cpu">
