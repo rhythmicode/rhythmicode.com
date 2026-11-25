@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to play 3Toop</title>
+  <meta name="description" content="The rules of 3Toop: Street Flick Soccer, with blockers, attack items and tips for playing the CPU.">
+  <link rel="icon" href="/3toop/icon.png">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    main { max-width: 46rem; }
+    .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0.5rem; padding: 0; list-style: none; }
+    .toc a {
+      display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid var(--rule);
+      border-radius: 999px; color: var(--fg); text-decoration: none; font-size: 0.95rem;
+    }
+    .toc a:hover { border-color: var(--accent); color: var(--accent); }
+    section { scroll-margin-top: 1rem; }
+    section h2 {
+      font-size: 1.5rem; margin: 3rem 0 0.75rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    h2 .num { color: var(--accent); margin-right: 0.4rem; }
+    h3 { font-size: 1.05rem; margin: 1.5rem 0 0.25rem; }
+    figure { margin: 1.25rem 0; }
+    figure img, figure video {
+      display: block; width: 100%; height: auto; border-radius: 12px;
+      background: #3a3936; aspect-ratio: 16 / 9; object-fit: cover;
+    }
+    figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .pair figure { margin: 0; }
+    .hero { margin-top: 1.5rem; }
+    ul.rules { padding-left: 1.2rem; }
+    ul.rules li { margin: 0.35rem 0; }
+    .calls { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1rem; margin: 1rem 0; }
+    .calls dt { font-weight: 700; letter-spacing: 0.04em; }
+    .calls dd { margin: 0; color: var(--muted); }
+    .callout {
+      border-left: 3px solid var(--accent); padding: 0.6rem 1rem; margin: 1.25rem 0;
+      background: color-mix(in srgb, var(--accent) 7%, transparent); border-radius: 0 8px 8px 0;
+    }
+    .items { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .item {
+      display: grid; grid-template-columns: 64px 1fr; gap: 1rem; align-items: start;
+      padding: 1rem; border: 1px solid var(--rule); border-radius: 12px;
+    }
+    .item img { width: 64px; height: 64px; border-radius: 12px; }
+    .item h3 { margin: 0 0 0.2rem; }
+    .item p { margin: 0; }
+    .levels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1rem 0; }
+    .level { padding: 0.8rem 1rem; border: 1px solid var(--rule); border-radius: 12px; }
+    .level strong { display: block; }
+    .level span { color: var(--muted); font-size: 0.95rem; }
+    .materials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1rem 0; }
+    .material { padding: 0.8rem 1rem; border: 1px solid var(--rule); border-radius: 12px; }
+    .material strong { display: block; }
+    .material span { color: var(--muted); font-size: 0.95rem; }
+    @media (max-width: 560px) {
+      .pair, .materials, .levels { grid-template-columns: 1fr; }
+      .calls { grid-template-columns: 1fr; gap: 0.1rem; }
+      .calls dd { margin-bottom: 0.5rem; }
+      .item { grid-template-columns: 48px 1fr; }
+      .item img { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">Rhythmicode</a>
+    <nav>
+      <a href="/3toop/" aria-current="page">3Toop</a>
+      <a href="mailto:info@rhythmicode.com">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <h1>How to play 3Toop</h1>
+    <p class="lede">Three balls, one goal, no players. Flick a ball between the
+    other two, keep the passes going, and score.</p>
+
+    <ul class="toc">
+      <li><a href="#match">The match</a></li>
+      <li><a href="#blockers">Blockers</a></li>
+      <li><a href="#attack">Attack items</a></li>
+      <li><a href="#cpu">Playing the CPU</a></li>
+    </ul>
+
+    <figure class="hero">
+      <video src="img/goal.mp4" poster="img/goal-poster.webp" autoplay muted loop playsinline
+        aria-label="A ball goes into the goal and the word GOAL appears"></video>
+    </figure>
+
+    <section id="match">
+      <h2><span class="num">1</span>The match</h2>
+
+      <h3>Flick</h3>
+      <p>Touch a ball, drag it, and let go. The ball leaves at the speed and in
+      the direction of your drag, so a quick swipe is a hard shot and a slow
+      one is a soft pass. There is no aiming line: your finger is the shot.</p>
+
+      <figure>
+        <video src="img/flick.mp4" poster="img/flick-poster.webp" autoplay muted loop playsinline
+          aria-label="A ball is flicked between the other two"></video>
+        <figcaption>A pass: the shot ball travels between the other two without touching them.</figcaption>
+      </figure>
+
+      <h3>The one rule that matters</h3>
+      <p>Every shot must pass <strong>between the other two balls</strong>
+      without touching either of them. Do that and you have made a pass. Keep
+      passing to work the balls up the pitch, then shoot at the goal on the
+      left.</p>
+      <ul class="rules">
+        <li>You can score with any legal shot, even your first, but the farther
+          you are from the goal the more care it takes.</li>
+        <li>A goal only counts if that same shot also passed between the other
+          two. The whole ball must cross the goal line.</li>
+        <li>You can’t shoot the same ball twice in a row.</li>
+        <li>Use the side walls like a pool cushion. A bounce restarts the
+          pass, so the ball must go between the other two after it bounces.</li>
+      </ul>
+
+      <h3>Calls</h3>
+      <p>When something goes wrong the game calls it, puts the three balls back,
+      and you <strong>shoot again</strong> if your turn still has time left.</p>
+      <dl class="calls">
+        <dt>FOUL</dt>
+        <dd>The shot ball touched another ball, didn’t pass between the other
+          two, or you grabbed a ball before the last shot finished. A goal
+          from a shot that didn’t pass between them is also a foul.</dd>
+        <dt>OUT</dt>
+        <dd>A ball went past the goal line outside the goal.</dd>
+        <dt>GOAL</dt>
+        <dd>One point to you. The balls reset and you keep shooting.</dd>
+        <dt>TIMEOUT</dt>
+        <dd>Your turn’s time ran out. The turn passes.</dd>
+      </dl>
+
+      <figure>
+        <img src="img/out.webp" width="1280" height="720" loading="lazy"
+          alt="An OUT call over the pitch, with the banner: the ball left the pitch outside the goal, shoot again">
+        <figcaption>Every call says what happened and what comes next.</figcaption>
+      </figure>
+
+      <h3>Turns and winning</h3>
+      <ul class="rules">
+        <li>Each turn lasts <strong>20 seconds</strong>, and you can take as many
+          shots as you like in that time. The game warns you as time runs
+          low.</li>
+        <li>Your turn ends only when your time is up. Fouls, outs and goals
+          just reset the balls.</li>
+        <li>Each player gets <strong>five turns</strong>. Most goals wins.</li>
+        <li>A draw? You can play <strong>Extra Time</strong>: one more turn
+          each, on the same score. If that is a draw too, you can go again.</li>
+      </ul>
+    </section>
+
+    <section id="blockers">
+      <h2><span class="num">2</span>Blockers</h2>
+      <p>Blockers are small walls you put in front of the goal to stop your
+      opponent scoring. Your blockers stop your opponent’s balls but not yours.
+      Turn them on in <strong>Match Settings</strong>.</p>
+
+      <figure>
+        <img src="img/blockers.webp" width="960" height="540" loading="lazy"
+          alt="Three blockers in front of the goal: rubber, brick and wood, each with a health bar">
+        <figcaption>Rubber, brick and wood in front of the goal. The bar above each one is its health.</figcaption>
+      </figure>
+
+      <h3>Earn points</h3>
+      <p>Every clean pass grows your <strong>chain</strong>. Points are banked
+      when the chain ends:</p>
+      <ul class="rules">
+        <li>A goal banks your whole chain, plus a bonus.</li>
+        <li>Damaging your opponent’s blocker banks some or all of it, more for a
+          harder hit. Breaking one pays a little extra.</li>
+        <li>A foul, an out or running out of time banks only part of it.</li>
+      </ul>
+      <p>You can only hold so many points, and what you don’t spend shrinks a
+      little at the end of each of your turns, so spend them.</p>
+
+      <h3>Build</h3>
+      <p>When your turn passes to your opponent, you get a few seconds to place
+      <strong>one blocker</strong> in front of the goal, if you have the
+      points, or to skip. You can have only a few blockers standing at once,
+      and if you are behind on goals, everything costs less.</p>
+
+      <div class="materials">
+        <div class="material"><strong>Wood</strong><span>Cheap and solid.</span></div>
+        <div class="material"><strong>Brick</strong><span>Costs more. Ordinary hits barely mark it.</span></div>
+        <div class="material"><strong>Rubber</strong><span>The cheapest. Bounces balls off faster.</span></div>
+      </div>
+
+      <h3>Break them</h3>
+      <p>Blockers wear down a little every turn and take damage when a ball hits
+      them hard. Hit your opponent’s blockers to clear the way and earn points
+      while you do it.</p>
+
+      <figure>
+        <video src="img/blocker-break.mp4" poster="img/blocker-break-poster.webp" autoplay muted loop playsinline
+          aria-label="A hard shot smashes a wooden blocker"></video>
+        <figcaption>A hard hit breaks a wooden blocker.</figcaption>
+      </figure>
+
+      <h3>Charged shots</h3>
+      <p>Keep a long chain of passes going and your shots become
+      <strong>charged</strong>. A charged shot hits blockers much harder, even
+      brick. The ring round the ball shows how close you are.</p>
+
+      <figure>
+        <img src="img/charge.webp" width="960" height="540" loading="lazy"
+          alt="Two balls glowing with a purple charge ring">
+        <figcaption>A purple ring means your next shot is charged.</figcaption>
+      </figure>
+
+      <div class="callout">On your turn your own blockers are hidden, so you can
+      see the whole pitch.</div>
+
+      <h3>Puddles and oil</h3>
+      <p>Some arenas have hazards. A puddle slows a ball down and puts out a
+      burning shot. An oil slick lets a ball slide further than you expect. A
+      burning ball sets oil alight and clears it for the rest of the match.</p>
+    </section>
+
+    <section id="attack">
+      <h2><span class="num">3</span>Attack items</h2>
+      <p>At the start of your turn, before your first shot, the
+      <strong>Attack</strong> tray offers three power-ups. Buy one with your
+      points, or skip. It lasts for the rest of that turn, but a
+      <strong>foul ends it</strong>. One item per turn, and it takes the place
+      of charge while it lasts.</p>
+
+      <div class="items">
+        <div class="item">
+          <img src="img/icon-fire.webp" width="100" height="100" alt="">
+          <div>
+            <h3>Fire</h3>
+            <p>Your shots burn. The first wooden or rubber blocker a burning
+            ball hits is cleared, and that puts the fire out. Brick only
+            scorches. A puddle puts out the shot, but the next shot that turn
+            still burns.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/icon-heavy.webp" width="100" height="100" alt="">
+          <div>
+            <h3>Heavy</h3>
+            <p>Each ball you shoot is twice as heavy. It shoves the other balls
+            further and hits blockers much harder, enough to break brick.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/icon-ghost.webp" width="100" height="100" alt="">
+          <div>
+            <h3>Ghost</h3>
+            <p>Each shot passes straight through the first blocker it touches,
+            without harming it, then is solid again.</p>
+          </div>
+        </div>
+      </div>
+
+      <figure>
+        <img src="img/fire.webp" width="600" height="338" loading="lazy"
+          alt="A burning ball streaks across the pitch">
+        <figcaption>Fire: a burning shot.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="img/heavy.webp" width="960" height="540" loading="lazy"
+          alt="A dark, heavy ball slams into a brick blocker in front of the goal">
+        <figcaption>Heavy: a heavy ball smashes into brick.</figcaption>
+      </figure>
+
+      <div class="pair">
+        <figure>
+          <img src="img/ghost-flight.webp" width="960" height="540" loading="lazy"
+            alt="A ghost ball with a pale halo flies toward a brick blocker">
+          <figcaption>Ghost: the halo shows the pass is ready…</figcaption>
+        </figure>
+        <figure>
+          <img src="img/ghost-pass.webp" width="960" height="540" loading="lazy"
+            alt="The ghost ball passes through the brick blocker">
+          <figcaption>…and the ball slips through the brick.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="cpu">
+      <h2><span class="num">4</span>Playing the CPU</h2>
+      <p>Pick the CPU’s level in <strong>Match Settings</strong>. It plays by
+      exactly the same rules you do.</p>
+
+      <div class="levels">
+        <div class="level"><strong>Easy</strong><span>Short shots and a shaky aim. Good for learning.</span></div>
+        <div class="level"><strong>Normal</strong><span>Steadier, but still misses. Doesn’t buy attack items.</span></div>
+        <div class="level"><strong>Hard</strong><span>Accurate. Rams blockers in its way and buys attack items.</span></div>
+        <div class="level"><strong>World Class</strong><span>The strongest. Uses every attack item, Ghost included.</span></div>
+      </div>
+
+      <figure>
+        <img src="img/difficulty.webp" width="1280" height="720" loading="lazy"
+          alt="The Difficulty Level menu: Easy, Normal, Hard, World Class">
+      </figure>
+
+      <h3>Tips</h3>
+      <ul class="rules">
+        <li><strong>Use all 20 seconds.</strong> A foul early in your turn costs
+          only a few seconds, so keep shooting until the clock runs out.</li>
+        <li><strong>Short passes first.</strong> Soft passes keep the balls close
+          and your chain growing. Shoot when the gap to the goal is clear.</li>
+        <li><strong>Mind the gap.</strong> Brushing a ball is a foul. When two
+          balls are close, go wide or use a wall.</li>
+        <li><strong>Cash in.</strong> A goal banks your whole chain. A foul
+          banks only part of it.</li>
+        <li><strong>Spend your points.</strong> Unspent points shrink every
+          turn. A blocker in the open part of the goal is rarely wasted.</li>
+        <li><strong>Watch its chain.</strong> A CPU on a long chain of passes is
+          about to shoot charged, and charged shots break even brick.</li>
+        <li><strong>Match your item to the wall.</strong> Fire for wood and
+          rubber, Heavy or Ghost for brick.</li>
+      </ul>
+    </section>
+
+    <p style="margin-top:3rem"><a href="/3toop/">← Back to 3Toop</a></p>
+  </main>
+  <footer>
+    © Rhythmicode, Finland ·
+    <a href="/3toop/privacy/">Privacy</a> ·
+    <a href="/3toop/terms/">Terms</a>
+  </footer>
+</body>
+</html>
