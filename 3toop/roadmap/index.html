@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3Toop Roadmap</title>
+  <meta name="description" content="Where 3Toop: Street Flick Soccer is now and what's coming next.">
+  <link rel="icon" href="/3toop/icon.png?v=2">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    :root { --done: #15803d; --now: var(--accent); --planned: var(--muted); }
+    @media (prefers-color-scheme: dark) { :root { --done: #4ade80; } }
+
+    .intro { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; }
+    .intro img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+    .intro h1 { margin: 0; }
+    .intro p { margin: 0.2rem 0 0; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-size: 0.9rem; color: var(--muted); }
+    .legend li { display: flex; align-items: center; gap: 0.4rem; }
+
+    .group { margin-top: 2.5rem; }
+    .group > h2 {
+      display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+      font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 0.75rem;
+    }
+    .group > h2 small { letter-spacing: 0; text-transform: none; font-weight: 400; font-size: 0.9rem; }
+
+    ol.stages { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 2px solid var(--rule); }
+    .stage { position: relative; margin: 0 0 1rem; }
+    .stage::before {
+      content: ""; position: absolute; left: calc(-1.5rem - 7px); top: 1.35rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--planned);
+    }
+    .stage.done::before { background: var(--done); border-color: var(--done); }
+    .stage.now::before { background: var(--now); border-color: var(--now); box-shadow: 0 0 0 4px color-mix(in srgb, var(--now) 25%, transparent); }
+
+    .card-s { border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.1rem; }
+    .stage.now .card-s { border-color: color-mix(in srgb, var(--now) 55%, var(--rule)); }
+    .head { display: flex; align-items: center; gap: 0.75rem; }
+    .icon {
+      flex: none; width: 40px; height: 40px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg);
+    }
+    .stage.now .icon { background: color-mix(in srgb, var(--now) 14%, transparent); color: var(--now); }
+    .stage.done .icon { background: color-mix(in srgb, var(--done) 14%, transparent); color: var(--done); }
+    .icon svg { width: 22px; height: 22px; }
+    .head h3 { margin: 0; font-size: 1.1rem; line-height: 1.3; flex: 1; }
+
+    .status {
+      flex: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 0.15rem 0.6rem; border-radius: 999px; white-space: nowrap;
+      border: 1px solid currentColor; color: var(--planned);
+    }
+    .status.done { color: var(--done); }
+    .status.now { color: var(--now); }
+
+    .card-s ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
+    .card-s li { margin: 0.2rem 0; }
+    .note { color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0 0; }
+
+    .card-s figure { margin: 0.9rem 0 0; }
+    .card-s figure img {
+      display: block; width: 100%; height: auto; border-radius: 8px;
+      aspect-ratio: 16 / 9; object-fit: cover; background: #3a3936;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--planned); }
+    .dot.done { background: var(--done); border-color: var(--done); }
+    .dot.now { background: var(--now); border-color: var(--now); }
+
+    .changes { margin-top: 2.5rem; color: var(--muted); }
+
+    @media (max-width: 480px) {
+      ol.stages { padding-left: 1.1rem; }
+      .stage::before { left: calc(-1.1rem - 7px); }
+      .card-s { padding: 0.9rem; }
+      .head { flex-wrap: wrap; }
+      .head h3 { flex-basis: calc(100% - 52px); }
+      .status { margin-left: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">Rhythmicode</a>
+    <nav>
+      <a href="/3toop/" aria-current="page">3Toop</a>
+      <a href="mailto:info@rhythmicode.com">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <img src="/3toop/icon.png?v=2" width="64" height="64" alt="">
+      <div>
+        <h1>3Toop Roadmap</h1>
+        <p class="lede">Where 3Toop is now and what's coming.</p>
+      </div>
+    </div>
+
+    <ul class="legend" aria-label="Status key">
+      <li><span class="dot done"></span>Done</li>
+      <li><span class="dot now"></span>In progress</li>
+      <li><span class="dot"></span>Planned</li>
+    </ul>
+
+    <section class="group" aria-labelledby="g-done">
+      <h2 id="g-done">Done</h2>
+      <ol class="stages">
+        <li class="stage done">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/><path d="M12 7V3M16 10l4-1M14.5 14.5l2 4M9.5 14.5l-2 4M8 10L4 9"/></svg></span>
+              <h3>The classic, rebuilt</h3>
+              <span class="status done">Done</span>
+            </div>
+            <ul>
+              <li>The original 3Toop, rebuilt from scratch for today's phones</li>
+              <li>Two players on one screen, or the CPU at four levels</li>
+              <li>Stats, achievements and an awards wall</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" aria-labelledby="g-now">
+      <h2 id="g-now">Now</h2>
+      <ol class="stages">
+        <li class="stage now">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 4 4.5 4 8.5a4 4 0 0 1-8 0c0-1.6.7-2.7 1.5-3.5.2 1.4 1 2 1.5 2C11 7.5 11 5 12 3z"/><path d="M3 21h18M5 21v-4h4v4M10 21v-4h4v4M15 21v-4h4v4"/></svg></span>
+              <h3>Blockers, attack items and new arenas</h3>
+              <span class="status now">In progress</span>
+            </div>
+            <ul>
+              <li>Build wood, brick and rubber blockers to guard your goal</li>
+              <li>Fire, charged shots, Heavy and Ghost balls to break through</li>
+              <li>New arenas: a rainy alley, a streetball court and a parking lot</li>
+              <li>A graffiti look for every menu, new sounds and haptics</li>
+              <li>New achievements and badges</li>
+            </ul>
+            <figure>
+              <img src="/3toop/how-to-play/img/fire-blocker-poster.webp" width="1280" height="720" loading="lazy"
+                alt="A burning ball heading for a wooden blocker in front of the goal">
+            </figure>
+            <p class="note">See them in action on the <a href="/3toop/how-to-play/">How to play</a> page.</p>
+          </div>
+        </li>
+        <li class="stage now">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/><path d="M9.5 10.5l2 2 3.5-4"/></svg></span>
+              <h3>Closed testing on Android</h3>
+              <span class="status now">In progress</span>
+            </div>
+            <ul>
+              <li>Testers play each new build on Google Play</li>
+              <li>Their feedback shapes the stages that follow</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" aria-labelledby="g-next">
+      <h2 id="g-next">Next <small>before the Android launch</small></h2>
+      <ol class="stages">
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.8-1.3"/><path d="M12 15v2"/></svg></span>
+              <h3>Learn, play, unlock</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>A tutorial that teaches new players the game</li>
+              <li>Earn experience as you play and unlock new things: ice blocks, a spray-painted iron plate and a goalkeeper</li>
+              <li>More arenas to unlock: a rooftop, a schoolyard and a beach promenade, and the return of Pocket Park and Old Days</li>
+            </ul>
+          </div>
+        </li>
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg></span>
+              <h3>Google Play Games</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>Sign in with Google Play Games</li>
+              <li>Your achievements on your Play Games account, and leaderboards</li>
+            </ul>
+          </div>
+        </li>
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="11" height="16" rx="2"/><rect x="15" y="9" width="6" height="8" rx="1.5"/><circle cx="8.5" cy="12" r="1.5"/></svg></span>
+              <h3>Parallel play</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>You and the CPU take your turns at the same time</li>
+              <li>A mini view shows the CPU's side, and its blockers land in your game</li>
+            </ul>
+          </div>
+        </li>
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c1-4 3-7 7-11 2-2 5-3 7-3 0 2-1 5-3 7-4 4-7 6-11 7z"/><path d="M9 15l-4-1 2-3h3M9 15l1 4 3-2v-3"/><circle cx="15" cy="9" r="1.3"/></svg></span>
+              <h3>Launch on Google Play</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>3Toop goes live for everyone on Android</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" aria-labelledby="g-later">
+      <h2 id="g-later">Later</h2>
+      <ol class="stages">
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 22h8M12 18v4"/></svg></span>
+              <h3>Play in your browser</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>A free web version with mouse controls</li>
+            </ul>
+          </div>
+        </li>
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12a4 4 0 0 1 3.9 4.8l-.8 3.7a2.3 2.3 0 0 1-4 .9L15 15H9l-2.1 2.4a2.3 2.3 0 0 1-4-.9l-.8-3.7A4 4 0 0 1 6 8z"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r=".6" fill="currentColor"/><circle cx="17.8" cy="13.3" r=".6" fill="currentColor"/></svg></span>
+              <h3>Steam and iPhone</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>Steam: a free demo first, then the full game with gamepad play and Steam Deck support</li>
+              <li>iPhone and iPad</li>
+            </ul>
+            <p class="note">Which comes first depends on how the Android and web versions go.</p>
+          </div>
+        </li>
+        <li class="stage">
+          <div class="card-s">
+            <div class="head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></svg></span>
+              <h3>Online play</h3>
+              <span class="status">Planned</span>
+            </div>
+            <ul>
+              <li>Play friends online, then ranked matches</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <p class="changes">Plans can change as we hear from players. Ideas and
+    feedback are welcome at <a href="mailto:info@rhythmicode.com">info@rhythmicode.com</a>.</p>
+
+    <p style="margin-top:2rem"><a href="/3toop/">← Back to 3Toop</a></p>
+  </main>
+  <footer>
+    © Rhythmicode, Finland ·
+    <a href="/3toop/privacy/">Privacy</a> ·
+    <a href="/3toop/terms/">Terms</a>
+  </footer>
+</body>
+</html>
